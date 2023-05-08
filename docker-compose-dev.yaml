@@ -1,0 +1,47 @@
+version: "3.1"
+services:
+  nginx:
+    build:
+      context: .
+      dockerfile: nginx/Dockerfile
+    ports:
+      - "8080:80"
+    networks:
+      - internal
+    volumes:
+      - ./src:/var/www/html/
+      - ./logs/nginx:/var/log/nginx/
+  php:
+    #image: php:fpm-alpine
+    build: .
+    networks:
+      - internal
+    depends_on:
+      - mysql
+    volumes:
+      - ./src/:/var/www/html/
+      - ./logs/php.log:/var/log/fpm-php.www.log
+    env_file: # needed for MYSQL_ROOT_PASSWORD
+      - .env
+    environment:
+      - MYSQL_DATABASE=survey_system
+      - MYSQL_HOST=mysql:3306
+      - MYSQL_USER=root
+  mysql:
+    image: mysql
+    networks:
+      - internal
+    volumes:
+      - ./docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+    environment:
+      - MYSQL_ROOT_PASSWORD_FILE=/run/secrets/mysql-root-password
+      - MYSQL_DATABASE=survey_system
+    secrets:
+      - mysql-root-password
+networks:
+  internal:
+    driver: bridge
+# dev must use file secrets- compose doesn't allow external
+secrets:
+  mysql-root-password:
+    file: ./env/mysql-root-password.txt

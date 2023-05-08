@@ -1,0 +1,55 @@
+# to be used to start up production Swarm stack
+version: "3.1"
+services:
+  nginx:
+    build:
+      context: .
+      dockerfile: nginx/Dockerfile
+    ports:
+      - "8080:80"
+    networks:
+      - internal
+    volumes:
+      - ./:/var/www/html/
+      - ./logs/nginx:/var/log/nginx/
+  php:
+    image: php:fpm-alpine
+    networks:
+      - internal
+    depends_on:
+      - mysql
+    volumes:
+      - ./:/var/www/html/
+      - ./logs/php.log:/var/log/fpm-php.www.log
+    environment:
+      - MYSQL_DATABASE=survey_system
+      - MYSQL_HOST=mysql:3306
+      - MYSQL_USER=root
+
+    # TODO: Appropriately use secret in php ENV
+    secrets:
+      - mysql-root-password
+  mysql:
+    image: mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD_FILE=/run/secrets/mysql-root-password
+      - MYSQL_DATABASE_FILE=/run/secrets/mysql-database
+      - MYSQL_ROOT_HOST_FILE=/run/secrets/mysql-host
+      - MYSQL_USER_FILE=/run/secrets/mysql-user
+    secrets:
+      - mysql-root-password
+      - mysql-database
+      - mysql-host
+      - mysql-user
+networks:
+  internal:
+    driver: bridge
+secrets:
+  mysql-root-password:
+    external: true
+  mysql-database:
+    external: true
+  mysql-host:
+    external: true
+  mysql-user:
+    external: true

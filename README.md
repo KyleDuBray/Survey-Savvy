@@ -2,7 +2,7 @@
 
 A web-based survey system created with HTML, CSS, JavaScript, and PHP. This project is a refactor of [survey-system](https://github.com/KyleDuBray/survey-system) for security and usability and to run in [docker](https://www.docker.com/) containers.
 
-## Setup (NEW- Docker Compose)
+## Setup
 
 The [default compose file](./docker-compose.yaml) is being adapted to start up a swarm cluster, and is not yet ready. The [development compose file](docker-compose-dev.yaml) can be used to start up the application locally.
 

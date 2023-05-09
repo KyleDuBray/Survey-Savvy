@@ -24,6 +24,9 @@ Create a folder called "env" at the project root, and in it, create 3 files:
 with only the corresponding string values in them (which match those in your .env file).
 
 Run `docker compose -f docker-compose-dev.yaml up` to start up the Nginx, PHP, and MySQL containers locally.
+The volumes create the following:
+A `logs` directory that contains php and nginx logs.
+A `mysql-data` directory for database persistence. Between Compose runs, this directory can be deleted to start from a fresh database.
 
 ## Docker Image Information
 

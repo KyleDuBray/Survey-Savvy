@@ -2,7 +2,7 @@
 
 $dbHost = $_ENV['MYSQL_HOST'];
 $dbUsername = $_ENV['MYSQL_USER'];
-$dbPassword = $_ENV['MYSQL_ROOT_PASSWORD'];
+$dbPassword = $_ENV['MYSQL_PASSWORD'];
 $database = $_ENV['MYSQL_DATABASE'];
 
 // Create connection

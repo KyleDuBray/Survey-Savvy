@@ -9,12 +9,19 @@ The [default compose file](./docker-compose.yaml) is being adapted to start up a
 Add the following to your .env file at the project root:
 
 ```sh
-MYSQL_ROOT_PASSWORD=your_mysql_password
+MYSQL_ROOT_PASSWORD=your_root_password
+MYSQL_USER=your_username
+MYSQL_PASSWORD=your_user_password
+
 ```
 
-The compose will inject the variable in the PHP container at build time.
+Docker Compose will inject the variables in the PHP container at build time.
 
-Create a folder called "env" at the project root, and in it, create a file called `mysql-root-password.txt` with only your password string in it (which matches the one in your .env file). This establishes the root password for MySQL.
+Create a folder called "env" at the project root, and in it, create 3 files:
+`mysql-root-password.txt`
+`mysql-user.txt`
+`mysql-password.txt`
+with only the corresponding string values in them (which match those in your .env file).
 
 Run `docker compose -f docker-compose-dev.yaml up` to start up the Nginx, PHP, and MySQL containers locally.
 

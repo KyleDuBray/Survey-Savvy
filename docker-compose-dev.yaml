@@ -21,23 +21,27 @@ services:
     volumes:
       - ./src/:/var/www/html/
       - ./logs/php.log:/var/log/fpm-php.www.log
-    env_file: # needed for MYSQL_ROOT_PASSWORD
+    env_file:
       - .env
     environment:
       - MYSQL_DATABASE=survey_system
       - MYSQL_HOST=mysql:3306
-      - MYSQL_USER=root
   mysql:
     image: mysql
     networks:
       - internal
     volumes:
       - ./docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+      - ./mysql-data:/var/lib/mysql
     environment:
       - MYSQL_ROOT_PASSWORD_FILE=/run/secrets/mysql-root-password
+      - MYSQL_PASSWORD_FILE=/run/secrets/mysql-password
+      - MYSQL_USER_FILE=/run/secrets/mysql-user
       - MYSQL_DATABASE=survey_system
     secrets:
       - mysql-root-password
+      - mysql-password
+      - mysql-user
 networks:
   internal:
     driver: bridge
@@ -45,3 +49,7 @@ networks:
 secrets:
   mysql-root-password:
     file: ./env/mysql-root-password.txt
+  mysql-password:
+    file: ./env/mysql-password.txt
+  mysql-user:
+    file: ./env/mysql-user.txt

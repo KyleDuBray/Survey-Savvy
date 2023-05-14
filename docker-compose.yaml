@@ -1,6 +1,6 @@
 # to be used to start up production Swarm stack-
 # NOT YET READY for docker stack deploy
-version: "3.1"
+version: "3.9"
 services:
   nginx:
     image: dubrowski/survey-system-nginx:1.0.0
@@ -10,7 +10,6 @@ services:
       - 8080:80
     volumes:
       - ./src:/var/www/html/
-      - ./logs/nginx:/var/log/nginx/
   php:
     image: dubrowski/survey-system-php:1.0.0
     networks:
@@ -19,7 +18,6 @@ services:
       - mysql
     volumes:
       - ./src/:/var/www/html/
-      - ./logs/php.log:/var/log/fpm-php.www.log
     env_file:
       - .env
     environment:

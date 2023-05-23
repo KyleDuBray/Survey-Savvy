@@ -30,11 +30,15 @@ foreach ($_POST as $key => $value) {
         $query3 = "SELECT option_id FROM question_option WHERE question_id ='" . $qID . "' AND option_text = '" . $textresp . "'";
         $oID = getDataElement($conn, $query3);
     }
-    echo "surveyID = {$sID}<br>questionID = {$qID}<br>optionID = {$oID}<br>userID = {$uID}<br>response text = {$textresp}<br><br><br>";
+    //echo "surveyID = {$sID}<br>questionID = {$qID}<br>optionID = {$oID}<br>userID = {$uID}<br>response text = {$textresp}<br><br><br>";
 
-    $response_stmt = "INSERT INTO response(survey_id, question_id, option_id, user_id, response_text) 
-VALUES('$sID', '$qID', '$oID', '$uID', '$textresp')";
-    $conn->query($response_stmt);
+    $response_prepare = $conn->prepare("INSERT INTO response(survey_id, question_id, option_id, user_id, response_text) 
+    VALUES(?, ?, ?, ?, ?)");
+    /*$response_stmt = "INSERT INTO response(survey_id, question_id, option_id, user_id, response_text) 
+VALUES('$sID', '$qID', '$oID', '$uID', '$textresp')"; */
+    $response_prepare->bind_param('sssss', $sID, $qID, $oID, $uID, $textresp);
+    $response_prepare->execute();
+    //$conn->query($response_stmt);
 
     //echo "{$question_type}<br>";
 }

@@ -118,17 +118,8 @@ if (!isset($_SESSION['loggedin'])) {
           optionsHtml += '<input type="hidden" name="options_count[]" value="' + (optionIndex - 1) + '">';
         }
         else if ($('#question-type').val() == 'text') {
-          //$('.option-group input').each(function () {
           optionsHtml += '<input type="hidden" name="question_options[]" value="NULL">';
           optionsHtml += '<input type="hidden" name="options_count[]" value="1">';
-          //});
-          //questionHtml += optionsHtml;
-          /*
-          questionHtml += '<div class="form-group">';
-          questionHtml += '<label for="correct-answer-' + questionCount + '">Correct Answer:</label>';
-          questionHtml += '<input type="text" id="correct-answer-' + questionCount + '" name="correct_answer_' + questionCount + '">';
-          questionHtml += '</div>';
-          */
           questionHtml += '</div>';
         }
         questionHtml += optionsHtml;
@@ -139,21 +130,6 @@ if (!isset($_SESSION['loggedin'])) {
         $('#question-text').val('');
         $('#survey-name').prop('readonly', true);
       });
-
-      /*
-      $('#create-survey-form').on('submit', function (event) {
-        event.preventDefault();
-        var form_data = $(this).serialize();
-        // Send form data to server-side PHP script for processing and saving to database
-        alert('Form data: ' + form_data);
-        // Clear the form after submission
-        $('#create-survey-form')[0].reset();
-        $('#question-groups').empty();
-        $('#submit-survey').hide();
-        questionCount = 1;
-        location.reload();
-      });
-      */
     });
   </script>
 </body>

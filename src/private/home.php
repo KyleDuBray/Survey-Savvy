@@ -28,29 +28,29 @@ if (!isset($_SESSION['loggedin'])) {
 	<div class="home-links">
 		<a href="./browsesurveys.php" class="home-link">
 			<div class="home-link-container">
-				<h3>Browse Surveys</h3>
+				<h3 class="home-link-title">Browse Surveys</h3>
 				<div class="icon-container">
-					<img src="../img/clipboard-take-survey.svg">
+					<img class="home-link-icon" src="../img/clipboard-take-survey.svg">
 				</div>
-				<p>Pick from a list of surveys available for the taking</p>
+				<p class="home-link-description">Pick from a list of surveys available for the taking</p>
 			</div>
 		</a>
 		<a href="./creationForm.php" class="home-link">
 			<div class="home-link-container">
-				<h3>Create a Survey</h3>
+				<h3 class="home-link-title">Create a Survey</h3>
 				<div class="icon-container">
-					<img src="../img/clipboard-create-survey.svg">
+					<img class="home-link-icon" src="../img/clipboard-create-survey.svg">
 				</div>
-				<p>Create a new custom survey</p>
+				<p class="home-link-description">Create a new custom survey</p>
 			</div>
 		</a>
 		<a href="./mysurveys.php" class="home-link">
 			<div class="home-link-container">
-				<h3>My Surveys</h3>
+				<h3 class="home-link-title">My Surveys</h3>
 				<div class="icon-container">
-					<img src="../img/clipboard-my-surveys.svg">
+					<img class="home-link-icon" src="../img/clipboard-my-surveys.svg">
 				</div>
-				<p>View statistics for your created surveys</p>
+				<p class="home-link-description">View statistics for your created surveys</p>
 			</div>
 		</a>
 	</div>

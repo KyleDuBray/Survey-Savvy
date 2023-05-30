@@ -1,5 +1,9 @@
 @import "global.css";
 
+h2 {
+  margin: ;
+}
+
 .home-links {
   width: 100%;
   display: flex;
@@ -22,6 +26,10 @@
   justify-content: center;
 }
 
+.home-link-icon {
+  width: 100px;
+}
+
 .home-link-container {
   border: 1px solid #e0e0e3;
   padding: 100px;
@@ -30,10 +38,6 @@
   flex-direction: column;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.25);
   height: 425px;
-}
-
-img {
-  width: 100px;
 }
 
 h3 {
@@ -46,4 +50,24 @@ p {
   text-align: center;
   width: 200px;
   margin-top: 10px;
+}
+
+@media screen and (max-width: 1250px) {
+  .home-links {
+    flex-direction: column;
+  }
+
+  .home-link-container {
+    align-items: center;
+    justify-content: center;
+    padding: 25px;
+    height: auto;
+  }
+  /* .home-link-title {
+    order: 1;
+  }
+
+  .home-link-description {
+    order: 2;
+  } */
 }

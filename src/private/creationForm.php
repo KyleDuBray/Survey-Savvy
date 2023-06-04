@@ -147,6 +147,7 @@ if (!isset($_SESSION['loggedin'])) {
         if (isQuestionError(questionText, questionType)) return;
 
         var questionHtml = '<div class="form-group question-group">';
+        questionHtml += '<button type="button" class="remove-question" id="remove-question">X</button>';
         questionHtml += '<h2>Question ' + questionCount + ": " + questionText + '</h2>';
         questionHtml += '<input type="hidden" name="question_type[]" value="' + questionType + '">';
         questionHtml += '<input type="hidden" name="question_text[]" value="' + questionText + '">';
@@ -181,7 +182,20 @@ if (!isset($_SESSION['loggedin'])) {
         $('#submit-survey').show();
         questionCount++;
         $('#question-text').val('');
+
+        // function for removing question
+        $('.remove-question').on('click', function () {
+          $(this).parent().next().next().remove();
+          $(this).parent().next().remove();
+          $(this).parent().remove();
+          questionCount--;
+
+        });
+
+
       });
+
+
 
       // Returns TRUE if error with question addition.
       // Also removes error HTML if no error present.

@@ -110,3 +110,10 @@
   height: 50px;
   font-weight: 600;
 }
+
+.remove-question {
+  display: inline;
+  border-radius: 2px;
+  background-color: #c25555;
+  cursor: pointer;
+}

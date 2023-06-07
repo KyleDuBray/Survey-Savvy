@@ -117,3 +117,11 @@
   background-color: #c25555;
   cursor: pointer;
 }
+
+button:focus,
+button:focus-within,
+button:focus-visible,
+button:target {
+  border: 2px solid blue;
+  text-decoration: underline;
+}

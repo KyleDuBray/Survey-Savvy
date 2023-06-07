@@ -81,6 +81,16 @@ if (!isset($_SESSION['loggedin'])) {
     }
 
     $(document).ready(function () {
+
+      // prevent form submission on 'enter' press on any input
+      // (submit button must be used)
+      $('input').keyup(function (e) {
+        if (e.keyCode == 13) {
+          e.preventDefault();
+          return false;
+        }
+      });
+
       var questionCount = 1;
       var questionType;
 
@@ -183,13 +193,16 @@ if (!isset($_SESSION['loggedin'])) {
         questionCount++;
         $('#question-text').val('');
 
-        // function for removing question
+        // remove question
         $('.remove-question').on('click', function () {
           $(this).parent().next().next().remove();
           $(this).parent().next().remove();
           $(this).parent().remove();
-          questionCount--;
 
+          // if last question was removed, hide the submit button again
+          if ($('#preview').is(':empty')) {
+            $('#submit-survey').hide();
+          }
         });
 
 

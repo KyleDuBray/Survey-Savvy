@@ -7,7 +7,7 @@
 }
 
 .register {
-  margin-top: 15vh;
+  margin-top: 10vh;
   width: 500px;
   background-color: #fefefe;
   box-shadow: 0 0 9px 0 rgba(0, 0, 0, 0.3);
@@ -60,4 +60,31 @@
   color: #5da806;
   text-align: center;
   margin-bottom: 2px;
+}
+
+.login-ask {
+  display: flex;
+  margin: auto;
+  padding-bottom: 15px;
+}
+
+.login-ask-span {
+}
+
+.login-ask-link {
+  color: #3274d6;
+  margin-left: 5px;
+  text-decoration: none;
+  font-weight: 500;
+  border-bottom: solid 2px transparent;
+}
+
+.login-ask-link:visited,
+.login-ask-link:hover,
+.login-assk-link:active {
+  color: inherit;
+}
+
+.login-ask-link:hover {
+  border-bottom: 2px solid #3274d6;
 }

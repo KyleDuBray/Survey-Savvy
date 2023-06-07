@@ -44,10 +44,16 @@
           }
         }
         ?>
+        <div class="login-ask">
+          <span class="login-ask-span">Already have an account?</span>
+          <a href="./login.php" class="login-ask-link"> Login</a>
+        </div>
         <button class="register-form-submit" type="submit" name="submit">Register</button>
-      </form>
+  </div>
 
-    </section>
+  </form>
+
+  </section>
   </div>
 
 

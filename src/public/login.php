@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8" />
   <title>Login</title>
-  <link href="../css/style.css" rel="stylesheet" type="text/css" />
+  <link href="../css/public.login.css" rel="stylesheet" type="text/css" />
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" />
 </head>
 
@@ -21,6 +21,22 @@
         <i class="fas fa-lock"></i>
       </label>
       <input type="password" name="password" placeholder="Password" id="password" required />
+
+      <?php
+      if (isset($_GET["error"])) {
+        switch ($_GET["error"]) {
+          case "invalidcredentials":
+            echo "<p class=error>Invalid Credentials</p>";
+            break;
+          default:
+            break;
+        }
+      }
+      ?>
+      <div class="register-ask">
+        <span class="register-ask-span">Need an account?</span>
+        <a href="./register.php" class="register-ask-link">Register</a>
+      </div>
       <input type="submit" value="Login" />
     </form>
   </div>

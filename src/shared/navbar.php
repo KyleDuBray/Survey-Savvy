@@ -10,7 +10,20 @@ $publicNav = " <nav class='navbar'>
     <img class='logo' src='../img/logo-name.svg' alt='logo with name'></a>
     <div class='nav-links'>" .
     formatLink("./login.php", "login") .
-    formatLink("./register.php", "register") . "</div></nav>";
+    formatLink("./register.php", "register") . "</div></nav>" .
+    "</div>
+        <input class='checkbox' type='checkbox' name='' id='' />
+        <div class='hamburger-lines'>
+          <span class='line line1'></span>
+          <span class='line line2'></span>
+          <span class='line line3'></span>
+        </div>  
+        <div class='menu-items'>
+        " .
+    formatMenuItem("./login.php", "login") .
+    formatMenuItem("./register.php", "register") .
+    " </div> 
+    </nav>";
 
 $privateNav = " <nav class='navbar'>
         <a href=" . $base . "private/home.php>" . "
@@ -36,7 +49,7 @@ $privateNav = " <nav class='navbar'>
     formatMenuItem("./profile.php", "profile") .
     formatMenuItem("../includes/logout.inc.php", "logout") .
     "
-        <div>
+        </div>
     </nav>
     ";
 
